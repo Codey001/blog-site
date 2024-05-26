@@ -40,7 +40,12 @@ function App() {
           <Footer />
       </div>
     </div>
-  ) : null
+  ) : (
+    <div>
+      <h1>Outlet called</h1>
+      <Outlet />
+    </div>
+  )
 
 
 }

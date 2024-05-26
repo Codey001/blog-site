@@ -12,22 +12,22 @@ function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   authService.getCurrentUser()
-  //   .then((userData) => {
-  //     console.log("USER DATA IN APP :",userData)
-  //     if(userData){
-  //       console.log("LOGIN TRIED IN APP: ");
-  //       dispatch(login({userData : userData}))
-  //     }
-  //     else{
-  //       console.log("LOGOUT CALLED IN APP")
-  //       dispatch(logout())
-  //       console.log("APP AFTER LOGOUT DISPATCHED");
-  //     }
-  //   })
-  //   .finally(() => setLoading(false))
-  // }, [])
+  useEffect(() => {
+    authService.getCurrentUser()
+    .then((userData) => {
+      console.log("USER DATA IN APP :",userData)
+      if(userData){
+        console.log("LOGIN TRIED IN APP: ");
+        dispatch(login({userData : userData}))
+      }
+      else{
+        console.log("LOGOUT CALLED IN APP")
+        dispatch(logout())
+        console.log("APP AFTER LOGOUT DISPATCHED");
+      }
+    })
+    .finally(() => setLoading(false))
+  }, [])
 
   console.log("LOADING STATE, ", loading);
 
@@ -46,8 +46,6 @@ function App() {
       <Outlet />
     </div>
   )
-
-
 }
 
 export default App

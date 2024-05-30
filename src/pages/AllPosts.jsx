@@ -17,26 +17,21 @@ function AllPosts() {
 
   let allPost = null;
   useSelector((state) => (allPost = state?.userPost));
-  if (allPost) {
-    console.log("ALL POSTS : IN ALLPOST FILE", allPost);
-  }
+
 
   useEffect(() => {
-    // appwriteService.getPosts([Query.or([Query.equal("status", "active"), Query.equal("userId", user_id)])])
     if (!allPost) {
       appwriteService
         .getPosts([Query.equal("userId", user_id)])
         .then((posts) => {
           console.log(posts);
           if (posts) {
-            console.log("USE EFFECT : ", posts?.documents);
             setPosts(posts.documents);
             dispatch(getUserPost(posts?.documents));
           }
         });
     }else{
       setPosts(allPost)
-      console.log("STORE POSTS : ", allPost)
     }
   }, []);
 

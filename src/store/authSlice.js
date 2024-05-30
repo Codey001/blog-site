@@ -5,7 +5,7 @@ const initialState = {
   status: false,
   userData: null,
   allPost: null,
-  userPost: null
+  userPost: null,
 };
 
 const authSlice = createSlice({
@@ -15,8 +15,7 @@ const authSlice = createSlice({
     //function inside reducers are actions
     login: (state, action) => {
       state.status = true;
-      console.log("STORE LOGIN DATA , ", action.payload)
-      state.userData = action.payload;
+      state.userData = action.payload.userData;
     },
     logout: (state, action) => {
       state.status = false;
@@ -24,15 +23,12 @@ const authSlice = createSlice({
       state.allPost = null;
       state.userPost = null;
     },
-    getUserPost : (state,action) => {
+    getUserPost: (state, action) => {
       state.userPost = action.payload;
-      console.log("USER POSTS IN STORE: ", action.payload);
     },
-    getAllPost : (state, action) => {
+    getAllPost: (state, action) => {
       state.allPost = action.payload;
-      console.log("ALL POST IN STORE : ", action.payload);
-    }
-
+    },
   },
 });
 

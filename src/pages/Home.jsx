@@ -3,6 +3,7 @@ import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPost } from "../store/authSlice";
+import Loader from "../components/Loader";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -16,8 +17,10 @@ export default function Home() {
 
   const logoutState = useSelector(state => state.status)
   console.log(logoutState)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     if (!totalPost) {
       appwriteService.getPosts().then((posts) => {
         if (posts) {
@@ -31,6 +34,7 @@ export default function Home() {
     } else {
       setPosts(totalPost);
     }
+    setLoading(false);
   }, [logoutState]);
 
   console.log("HOME POSTS LENGTH", posts.length);
@@ -52,6 +56,7 @@ export default function Home() {
   }
 
   return (
+    !loading ? 
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap">
@@ -63,5 +68,6 @@ export default function Home() {
         </div>
       </Container>
     </div>
+    : <Loader />
   );
 }

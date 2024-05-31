@@ -5,9 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Query } from "appwrite";
 
 import { getUserPost } from "../store/authSlice";
+import Loader from "../components/Loader";
 
 function AllPosts() {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const [posts, setPosts] = useState([]);
   let user_id = null;
@@ -19,7 +21,9 @@ function AllPosts() {
   useSelector((state) => (allPost = state?.userPost));
 
 
+
   useEffect(() => {
+    setLoading(true);
     if (!allPost) {
       appwriteService
         .getPosts([Query.equal("userId", user_id)])
@@ -33,9 +37,11 @@ function AllPosts() {
     }else{
       setPosts(allPost)
     }
+    setLoading(false);
   }, []);
 
   return (
+    !loading ? 
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap">
@@ -47,6 +53,7 @@ function AllPosts() {
         </div>
       </Container>
     </div>
+    : <Loader />
   );
 }
 

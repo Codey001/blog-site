@@ -65,8 +65,6 @@ function Header() {
                 </li>
               ) : null
             )}
-            {console.log("AUTH STATUS : ")}
-            {console.log(authStatus)}
             {authStatus && (
               <li>
                 <LogoutBtn />

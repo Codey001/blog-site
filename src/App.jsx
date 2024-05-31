@@ -7,6 +7,7 @@ import "./App.css";
 import { Footer, Header } from "./components";
 import { Outlet } from "react-router-dom";
 import { combineSlices } from "@reduxjs/toolkit";
+import Loader from "./components/Loader";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
+
   return !loading ? (
     <div className="min-h-screen w-full flex flex-wrap justify-center bg-gray-200">
       <div className="w-full block">
@@ -33,7 +35,9 @@ function App() {
         <Footer />
       </div>
     </div>
-  ) : null;
+  ) : (
+    <Loader />
+  );
 }
 
 export default App;

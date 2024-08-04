@@ -40,17 +40,17 @@ export default function Home() {
   console.log("HOME POSTS LENGTH", posts.length);
   if (posts.length === 0) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
-        <Container>
+      <div className="w-full py-8 mt-4 text-center h-3/4">
+        {/* <Container> */}
           <div className="flex flex-wrap">
             <div className="p-2 w-full ">
-              <h1 className="text-2xl font-bold hover:text-gray-500 p-20">
+              <h1 className="text-2xl font-bold hover:text-gray-500 text-center ">
                 Login to read posts
               </h1>
-              <p className="p-20">Kindly login to have access to all posts</p>
+              {/* <p className="p-20">Kindly login to have access to all posts</p> */}
             </div>
           </div>
-        </Container>
+        {/* </Container> */}
       </div>
     );
   }
@@ -61,7 +61,7 @@ export default function Home() {
       <Container>
         <div className="flex flex-wrap">
           {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-1/4">
+            <div key={post.$id} className="p-2 w-1/2">
               <PostCard {...post} />
             </div>
           ))}

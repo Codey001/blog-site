@@ -86,7 +86,7 @@
 //           <Route path="/" element={<App />}>
 
 //             <Route index element={<Home />} />
-//             {/* <Route 
+//             {/* <Route
 //               path="/"
 //               element={<Home />}
 
@@ -149,9 +149,6 @@
 //   </React.StrictMode>
 // );
 
-
-
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -170,12 +167,10 @@ import AllPosts from "./pages/AllPosts";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-
-      <BrowserRouter >
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} >
-
-            <Route index element={<Home /> }/>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
 
             <Route
               path="login"

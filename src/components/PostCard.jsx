@@ -8,14 +8,16 @@ const PostCard = ({ $id, title, featuredImage, status}) => {
   return (
     <Link to={`/post/${$id}`}>
       <div className="w-full bg-gray-100 rounded-xl p-4 overflow-hidden shadow-xl">
-        <div className="w-full justify-center mb-4">
+
+        <div className="w-full justify-center ">
           <img
             src={appwriteService.getFilePreview(featuredImage)}
             alt={title}
-            className="rounded-xl"
+            className="w-full h-full rounded-xl"
+            
           />
         </div>
-        <div className="flex flex-wrap justify-between">
+        <div className="flex flex-wrap justify-between py-1">
           <h2 className="text-xl font-bold">{title}</h2>
           {/* {btn && <button className={`${status == 'active' ? 'bg-green' : 'bg-red'}`}>{status}</button>} */}
           

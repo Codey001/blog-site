@@ -17,6 +17,7 @@ export default function PostForm({ post }) {
 
     const navigate = useNavigate();
     const userData = useSelector((state) => state.userData);
+    // console.log(userData);
     console.log("USER DATA : ",userData)
 
 
